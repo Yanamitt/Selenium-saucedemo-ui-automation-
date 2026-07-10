@@ -30,6 +30,9 @@ def build_metadata(context, environment, git_info, versions):
             "platform": versions["platform"],
             "pytest": versions["pytest"],
             "selenium": versions["selenium"],
+            "configuration_errors": list(
+                environment.get("configuration_errors", [])
+            ),
         },
         "git": {
             "commit": git_info.get("commit"),

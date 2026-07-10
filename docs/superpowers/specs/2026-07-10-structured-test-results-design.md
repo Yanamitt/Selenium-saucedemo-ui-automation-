@@ -59,6 +59,7 @@ artifacts/<run_id>/
 - `environment.platform`
 - `environment.pytest`
 - `environment.selenium`
+- `environment.configuration_errors`
 - `git.commit`
 - `git.branch`
 
@@ -80,7 +81,11 @@ artifacts/<run_id>/
 ## Error Handling
 
 - 元数据中的 Git 信息无法读取时写入 `null`，不阻断测试。
+- 无效浏览器或超时配置写入 `configuration_errors`，实际校验留在测试执行阶段，保证失败运行仍能生成完整产物。
+- 新运行若指向已包含产物的目录则拒绝启动；只有 runner 导出的完整上下文可以由 conftest 附着。
 - 浏览器日志或截图捕获失败时记录失败原因，不覆盖原测试结果。
+- HTML 报告中的失败截图使用 data URI 内嵌，不依赖原机器绝对路径。
+- Pytest 临时目录清理失败时重试并输出告警，不覆盖原测试退出码。
 - JSON 使用 UTF-8、两空格缩进和稳定字段名称。
 - 即使没有收集到测试或 fixture setup 失败，也必须写出结果文件。
 

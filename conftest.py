@@ -1,7 +1,9 @@
+import base64
+import os
 import platform
 import re
 import subprocess
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
@@ -9,14 +11,14 @@ import selenium
 from selenium import webdriver
 
 from reporting.result_writer import TestResultCollector, build_metadata, write_json
-from reporting.run_context import RunContext
+from reporting.run_context import RunContext, format_utc
 from settings import get_base_url, get_browser_name, get_timeout, is_headless
 
 
 try:
-    import pytest_html
+    from pytest_html import extras as pytest_html_extras
 except ImportError:
-    pytest_html = None
+    pytest_html_extras = None
 
 
 def _build_options(browser_name, headless):
@@ -68,7 +70,7 @@ def _browser_logs(driver):
 
 
 def _append_failure_log(report, screenshot_path, driver, failure_log):
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    timestamp = format_utc(datetime.now(timezone.utc))
     browser_logs = _browser_logs(driver) if driver else []
     lines = [
         f"[{timestamp}] {report.nodeid}",
@@ -90,16 +92,17 @@ def _append_failure_log(report, screenshot_path, driver, failure_log):
 
 
 def _attach_html_screenshot(report, screenshot_path):
-    if pytest_html is None or not screenshot_path:
+    if pytest_html_extras is None or not screenshot_path:
         return
 
+    encoded_image = base64.b64encode(Path(screenshot_path).read_bytes()).decode("ascii")
     html = (
-        '<div><img src="{0}" alt="screenshot" '
+        '<div><img src="data:image/png;base64,{0}" alt="screenshot" '
         'style="width:304px;height:228px;" '
         'onclick="window.open(this.src)" align="right"/></div>'
-    ).format(screenshot_path)
+    ).format(encoded_image)
     extras = getattr(report, "extras", [])
-    extras.append(pytest_html.extras.html(html))
+    extras.append(pytest_html_extras.html(html))
     report.extras = extras
 
 
@@ -120,6 +123,29 @@ def _git_value(project_root, *args):
     return completed.stdout.strip() or None
 
 
+def _metadata_environment():
+    configuration_errors = []
+    try:
+        browser = get_browser_name()
+    except ValueError as exc:
+        browser = os.getenv("BROWSER", "edge").strip().lower()
+        configuration_errors.append(str(exc))
+
+    try:
+        selenium_timeout = get_timeout()
+    except ValueError as exc:
+        selenium_timeout = None
+        configuration_errors.append(str(exc))
+
+    return {
+        "base_url": get_base_url(),
+        "browser": browser,
+        "headless": is_headless(),
+        "selenium_timeout": selenium_timeout,
+        "configuration_errors": configuration_errors,
+    }
+
+
 def pytest_configure(config):
     context = RunContext.create(Path(str(config.rootpath)))
     collector = TestResultCollector(context)
@@ -128,12 +154,7 @@ def pytest_configure(config):
 
     metadata = build_metadata(
         context,
-        {
-            "base_url": get_base_url(),
-            "browser": get_browser_name(),
-            "headless": is_headless(),
-            "selenium_timeout": get_timeout(),
-        },
+        _metadata_environment(),
         {
             "commit": _git_value(context.project_root, "rev-parse", "HEAD"),
             "branch": _git_value(context.project_root, "branch", "--show-current"),

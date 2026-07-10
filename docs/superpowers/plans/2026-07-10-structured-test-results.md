@@ -714,3 +714,15 @@ Expected: `4 passed`; newest run directory contains all six artifact types; `res
 Run: `git diff --check` and `git status --short`.
 
 Expected: no whitespace errors; no changes under `base/`, `pages/`, existing business tests, or `.understand-anything/`.
+
+## Review Hardening Addendum
+
+独立审查后在同一阶段内补充以下已验证边界：
+
+- [x] 无效 `BROWSER` 不再中断 `pytest_configure`；标准入口仍生成 metadata、results、JUnit、HTML 和失败日志。
+- [x] 新运行拒绝复用已有内容的产物目录，runner 导出的完整上下文允许 conftest 附着。
+- [x] HTML 失败截图改为 base64 data URI，下载 CI 产物后仍可查看。
+- [x] `failures.txt` 使用 UTC `Z` 时间。
+- [x] Pytest 临时目录清理重试三次，失败时告警但保留原测试退出码。
+
+对应回归测试位于 `tests/unit/test_reporting_contract.py`、`tests/unit/test_run_context.py`、`tests/unit/test_failure_artifacts.py` 和 `tests/unit/test_run_tests.py`。

@@ -40,6 +40,14 @@ class RunContext:
     def create(cls, project_root, environment=None, now=None, suffix=None):
         env = os.environ if environment is None else environment
         root = Path(project_root).resolve()
+        is_exported_context = all(
+            env.get(name)
+            for name in (
+                "TEST_RUN_ID",
+                "TEST_ARTIFACT_DIR",
+                "TEST_RUN_STARTED_AT",
+            )
+        )
         if env.get("TEST_RUN_STARTED_AT"):
             started_at = _parse_utc(env["TEST_RUN_STARTED_AT"])
         else:
@@ -59,6 +67,9 @@ class RunContext:
             if not artifact_root.is_absolute():
                 artifact_root = root / artifact_root
             run_dir = artifact_root / run_id
+
+        if run_dir.is_dir() and any(run_dir.iterdir()) and not is_exported_context:
+            raise ValueError(f"Run directory already contains artifacts: {run_dir}")
 
         run_dir.mkdir(parents=True, exist_ok=True)
         (run_dir / "screenshots").mkdir(exist_ok=True)

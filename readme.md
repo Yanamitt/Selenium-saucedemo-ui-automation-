@@ -78,15 +78,17 @@ python scripts/run_tests.py
 
 ```text
 artifacts/<run_id>/
-  metadata.json       # 环境、依赖版本、Git 提交和分支
+  metadata.json       # 环境、配置错误、依赖版本、Git 提交和分支
   results.json        # 用例结果、阶段、耗时、错误和汇总
   junit.xml           # CI 和通用测试平台可读取的标准结果
-  report.html         # Pytest-HTML 自包含报告
+  report.html         # Pytest-HTML 自包含报告，失败截图以内嵌方式保存
   failures.txt        # 失败阶段、URL、异常和浏览器日志
   screenshots/        # 失败截图
 ```
 
 仍然可以直接运行 `pytest`；它会生成 JSON 元数据和结果。需要完整的 HTML、JUnit XML 和统一目录时，应使用标准运行入口。
+
+浏览器或超时配置无效时，标准入口仍会生成完整失败产物，并在 `metadata.json` 的 `configuration_errors` 中记录配置问题。
 
 这些产物用于快速定位 UI 自动化失败原因，也可以作为后续“测试结果分析 Agent”的输入数据。
 
