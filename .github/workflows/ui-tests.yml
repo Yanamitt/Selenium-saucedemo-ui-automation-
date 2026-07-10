@@ -1,0 +1,40 @@
+name: UI Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  selenium-tests:
+    runs-on: windows-latest
+
+    env:
+      BROWSER: edge
+      HEADLESS: "true"
+      SELENIUM_TIMEOUT: "10"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run pytest
+        run: pytest
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-test-artifacts
+          path: |
+            report.html
+            failures.txt
+            screenshots/
+          if-no-files-found: ignore

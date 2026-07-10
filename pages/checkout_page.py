@@ -8,6 +8,8 @@ class CheckoutPage(BasePage):
     POSTAL_CODE = (By.ID, "postal-code")
     CONTINUE_BTN = (By.ID, "continue")
     FINISH_BTN = (By.ID, "finish")
+    OVERVIEW_ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")
+    OVERVIEW_ITEM_PRICE = (By.CLASS_NAME, "inventory_item_price")
     SUCCESS_HEADER = (By.CLASS_NAME, "complete-header")
 
     def fill_info_and_continue(self, first, last, zip_code):
@@ -18,6 +20,12 @@ class CheckoutPage(BasePage):
 
     def finish_order(self):
         self.click(self.FINISH_BTN)
+
+    def get_overview_item_name(self):
+        return self.get_text(self.OVERVIEW_ITEM_NAME)
+
+    def get_overview_item_price(self):
+        return self.get_text(self.OVERVIEW_ITEM_PRICE)
 
     def get_success_message(self):
         return self.get_text(self.SUCCESS_HEADER)
