@@ -1,21 +1,22 @@
+import platform
 import re
+import subprocess
 from datetime import datetime
 from pathlib import Path
 
 import pytest
+import selenium
 from selenium import webdriver
 
-from settings import get_browser_name, is_headless
+from reporting.result_writer import TestResultCollector, build_metadata, write_json
+from reporting.run_context import RunContext
+from settings import get_base_url, get_browser_name, get_timeout, is_headless
 
 
 try:
     import pytest_html
 except ImportError:
     pytest_html = None
-
-
-SCREENSHOT_DIR = Path("screenshots")
-FAILURE_LOG = Path("failures.txt")
 
 
 def _build_options(browser_name, headless):
@@ -66,7 +67,7 @@ def _browser_logs(driver):
     return [f"{entry.get('level', 'INFO')}: {entry.get('message', '')}" for entry in logs[-20:]]
 
 
-def _append_failure_log(report, screenshot_path, driver):
+def _append_failure_log(report, screenshot_path, driver, failure_log):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     browser_logs = _browser_logs(driver) if driver else []
     lines = [
@@ -83,7 +84,7 @@ def _append_failure_log(report, screenshot_path, driver):
         lines.append("browser_logs:")
         lines.extend(browser_logs)
 
-    with FAILURE_LOG.open("a", encoding="utf-8") as failure_file:
+    with failure_log.open("a", encoding="utf-8") as failure_file:
         failure_file.write("\n".join(lines))
         failure_file.write("\n\n")
 
@@ -102,6 +103,51 @@ def _attach_html_screenshot(report, screenshot_path):
     report.extras = extras
 
 
+def _git_value(project_root, *args):
+    try:
+        completed = subprocess.run(
+            ["git", "-c", f"safe.directory={project_root.as_posix()}", *args],
+            cwd=project_root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except OSError:
+        return None
+
+    if completed.returncode != 0:
+        return None
+    return completed.stdout.strip() or None
+
+
+def pytest_configure(config):
+    context = RunContext.create(Path(str(config.rootpath)))
+    collector = TestResultCollector(context)
+    config._test_run_context = context
+    config._test_result_collector = collector
+
+    metadata = build_metadata(
+        context,
+        {
+            "base_url": get_base_url(),
+            "browser": get_browser_name(),
+            "headless": is_headless(),
+            "selenium_timeout": get_timeout(),
+        },
+        {
+            "commit": _git_value(context.project_root, "rev-parse", "HEAD"),
+            "branch": _git_value(context.project_root, "branch", "--show-current"),
+        },
+        {
+            "python": platform.python_version(),
+            "platform": platform.platform(),
+            "pytest": pytest.__version__,
+            "selenium": selenium.__version__,
+        },
+    )
+    write_json(context.metadata_path, metadata)
+
+
 @pytest.fixture(scope="function")
 def driver():
     browser_name = get_browser_name()
@@ -118,20 +164,43 @@ def driver():
 def pytest_runtest_makereport(item, call):
     outcome = yield
     report = outcome.get_result()
+    context = item.config._test_run_context
+    collector = item.config._test_result_collector
+    web_driver = item.funcargs.get("driver") if "driver" in item.funcargs else None
+    screenshot_reference = None
 
     if report.failed:
-        web_driver = item.funcargs.get("driver") if "driver" in item.funcargs else None
-        screenshot_path = None
-
         if web_driver:
-            SCREENSHOT_DIR.mkdir(exist_ok=True)
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
             screenshot_name = f"{_safe_file_name(item.name)}_{timestamp}.png"
-            screenshot_path = str(SCREENSHOT_DIR / screenshot_name)
+            screenshot_path = context.screenshots_dir / screenshot_name
             try:
-                web_driver.save_screenshot(screenshot_path)
-                _attach_html_screenshot(report, screenshot_path)
+                web_driver.save_screenshot(str(screenshot_path))
+                _attach_html_screenshot(report, str(screenshot_path))
+                screenshot_reference = screenshot_path.relative_to(
+                    context.run_dir
+                ).as_posix()
             except Exception as exc:
-                screenshot_path = f"<capture failed: {exc}>"
+                screenshot_reference = f"<capture failed: {exc}>"
 
-        _append_failure_log(report, screenshot_path, web_driver)
+        _append_failure_log(
+            report,
+            screenshot_reference,
+            web_driver,
+            context.failure_log,
+        )
+
+    collector.record_phase(
+        nodeid=report.nodeid,
+        name=item.name,
+        markers=[marker.name for marker in item.iter_markers()],
+        phase=report.when,
+        outcome=report.outcome,
+        duration=getattr(report, "duration", 0.0),
+        failure_message=str(report.longrepr) if report.failed else None,
+        screenshot=screenshot_reference,
+    )
+
+
+def pytest_sessionfinish(session, exitstatus):
+    session.config._test_result_collector.write_results(exitstatus)
