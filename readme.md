@@ -4,7 +4,7 @@
 
 ## 技术栈
 
-- Python 3.13
+- Python 3.12+
 - Selenium WebDriver
 - Pytest
 - Pytest-HTML
@@ -15,11 +15,14 @@
 ```text
 base/                 # 页面对象基类，封装等待、点击、输入、读取文本
 pages/                # 具体页面对象
+reporting/            # 运行批次、元数据和结构化测试结果
+scripts/              # 标准测试运行入口
 tests/                # Pytest 测试用例
 conftest.py           # 浏览器 fixture、失败截图、失败日志、HTML 报告增强
 settings.py           # BASE_URL、BROWSER、HEADLESS、SELENIUM_TIMEOUT 配置
 pytest.ini            # Pytest 默认运行参数
 requirements.txt      # 项目最小依赖
+artifacts/            # 按 run_id 隔离的测试产物（运行后生成）
 ```
 
 ## 覆盖场景
@@ -37,19 +40,19 @@ requirements.txt      # 项目最小依赖
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-pytest
+python scripts/run_tests.py
 ```
 
 只运行登录失败用例：
 
 ```powershell
-pytest tests/test_login.py -q -o addopts=
+python scripts/run_tests.py tests/test_login.py -q
 ```
 
 只运行端到端购物流程：
 
 ```powershell
-pytest tests/test_e2e_flow.py -q -o addopts=
+python scripts/run_tests.py tests/test_e2e_flow.py -q
 ```
 
 ## 运行配置
@@ -66,19 +69,27 @@ pytest tests/test_e2e_flow.py -q -o addopts=
 ```powershell
 $env:BROWSER = "chrome"
 $env:HEADLESS = "true"
-pytest
+python scripts/run_tests.py
 ```
 
 ## 测试报告和失败诊断
 
-默认运行 `pytest` 会生成：
+标准命令 `python scripts/run_tests.py` 会为每次运行创建独立目录：
 
-- `report.html`：Pytest-HTML 自包含测试报告
-- `screenshots/`：失败用例截图
-- `failures.txt`：失败用例、失败阶段、当前 URL、截图路径、异常堆栈和浏览器日志
+```text
+artifacts/<run_id>/
+  metadata.json       # 环境、依赖版本、Git 提交和分支
+  results.json        # 用例结果、阶段、耗时、错误和汇总
+  junit.xml           # CI 和通用测试平台可读取的标准结果
+  report.html         # Pytest-HTML 自包含报告
+  failures.txt        # 失败阶段、URL、异常和浏览器日志
+  screenshots/        # 失败截图
+```
+
+仍然可以直接运行 `pytest`；它会生成 JSON 元数据和结果。需要完整的 HTML、JUnit XML 和统一目录时，应使用标准运行入口。
 
 这些产物用于快速定位 UI 自动化失败原因，也可以作为后续“测试结果分析 Agent”的输入数据。
 
 ## CI
 
-项目包含 GitHub Actions 配置：`.github/workflows/ui-tests.yml`。CI 会安装依赖并以 `HEADLESS=true` 运行测试，执行结束后上传 HTML 报告、失败截图和失败日志。
+项目包含 GitHub Actions 配置：`.github/workflows/ui-tests.yml`。CI 会安装依赖并以 `HEADLESS=true` 运行标准测试入口，执行结束后上传完整的 `artifacts/` 目录。

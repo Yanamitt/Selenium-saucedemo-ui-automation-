@@ -3,6 +3,7 @@ __pycache__/
 *.html
 *.png
 screenshots/
+artifacts/
 venv/
 .venv/
 .env

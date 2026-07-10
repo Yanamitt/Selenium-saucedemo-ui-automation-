@@ -553,6 +553,7 @@ Expected: collection error because `scripts.run_tests` does not exist.
 ```python
 # scripts/run_tests.py
 import os
+import shutil
 import sys
 from pathlib import Path
 
@@ -571,6 +572,7 @@ def build_pytest_args(context, user_args):
         "-o",
         "addopts=-vs",
         *user_args,
+        f"--basetemp={context.run_dir / 'tmp'}",
         f"--html={context.report_path}",
         "--self-contained-html",
         f"--junitxml={context.junit_path}",
@@ -581,9 +583,13 @@ def main(argv=None):
     context = RunContext.create(PROJECT_ROOT)
     context.export_environment()
     os.chdir(PROJECT_ROOT)
-    arguments = build_pytest_args(context, list(sys.argv[1:] if argv is None else argv))
+    user_args = list(sys.argv[1:] if argv is None else argv)
+    arguments = build_pytest_args(context, user_args)
     print(f"Test artifacts: {context.run_dir}")
-    return int(pytest.main(arguments))
+    try:
+        return int(pytest.main(arguments))
+    finally:
+        shutil.rmtree(context.run_dir / "tmp", ignore_errors=True)
 
 
 if __name__ == "__main__":
@@ -595,6 +601,7 @@ Update `pytest.ini`:
 ```ini
 [pytest]
 addopts = -vs
+norecursedirs = .git .venv .pytest_cache .understand-anything artifacts
 log_cli = true
 log_cli_level = INFO
 log_cli_format = %(asctime)s [%(levelname)s] %(message)s
@@ -619,7 +626,7 @@ Expected: runner unit test passes.
 - Consumes: `scripts/run_tests.py`
 - Produces: documented local/CI command and complete artifact upload
 
-- [ ] **Step 1: Write failing collect-only contract test**
+- [ ] **Step 1: Write failing standard-run contract test**
 
 ```python
 # tests/unit/test_reporting_contract.py
@@ -633,14 +640,19 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
-def test_collect_only_run_creates_machine_readable_contract(tmp_path):
+def test_standard_run_creates_complete_artifact_contract(tmp_path):
     environment = os.environ.copy()
     environment["TEST_ARTIFACTS_ROOT"] = str(tmp_path)
     for name in ("TEST_RUN_ID", "TEST_ARTIFACT_DIR", "TEST_RUN_STARTED_AT"):
         environment.pop(name, None)
 
     completed = subprocess.run(
-        [sys.executable, "scripts/run_tests.py", "--collect-only", "-q"],
+        [
+            sys.executable,
+            "scripts/run_tests.py",
+            "tests/unit/test_run_context.py::test_create_resolves_relative_artifact_root",
+            "-q",
+        ],
         cwd=PROJECT_ROOT,
         env=environment,
         capture_output=True,
@@ -655,8 +667,9 @@ def test_collect_only_run_creates_machine_readable_contract(tmp_path):
     for name in ("metadata.json", "results.json", "junit.xml", "report.html", "failures.txt"):
         assert (run_dir / name).exists(), name
     assert (run_dir / "screenshots").is_dir()
+    assert not (run_dir / "tmp").exists()
     assert json.loads((run_dir / "metadata.json").read_text(encoding="utf-8"))["schema_version"] == "1.0"
-    assert json.loads((run_dir / "results.json").read_text(encoding="utf-8"))["summary"]["total"] == 0
+    assert json.loads((run_dir / "results.json").read_text(encoding="utf-8"))["summary"]["total"] == 1
 ```
 
 - [ ] **Step 2: Verify RED**

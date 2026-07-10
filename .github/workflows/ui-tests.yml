@@ -26,15 +26,12 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run pytest
-        run: pytest
+        run: python scripts/run_tests.py
 
       - name: Upload test artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ui-test-artifacts
-          path: |
-            report.html
-            failures.txt
-            screenshots/
+          path: artifacts/
           if-no-files-found: ignore

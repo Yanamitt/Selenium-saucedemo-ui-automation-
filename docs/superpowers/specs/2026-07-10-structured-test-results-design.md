@@ -23,6 +23,8 @@
 
 `scripts/run_tests.py` 是标准运行入口。它创建 `RunContext`，设置本次运行环境变量，并调用 Pytest，同时指定 HTML 和 JUnit XML 的输出位置。
 
+标准入口还将 Pytest 临时目录放在本次运行目录内，运行结束后删除；`pytest.ini` 禁止递归扫描 `artifacts/` 等生成目录，避免历史产物被误收集为测试。
+
 `reporting/run_context.py` 只负责运行 ID、UTC 时间和目录解析。`reporting/result_writer.py` 聚合 Pytest setup/call/teardown 三个阶段，生成一个稳定的测试级结果列表。`conftest.py` 负责把 Pytest report、失败截图和浏览器诊断传给结果收集器。
 
 直接运行 `pytest` 仍然可用，并会生成 JSON 元数据和结果；标准入口额外保证 HTML 与 JUnit XML 同时进入同一运行目录。
