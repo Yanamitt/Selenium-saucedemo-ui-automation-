@@ -2,9 +2,9 @@ from selenium.webdriver.common.by import By
 from base.base_page import BasePage
 
 class CartPage(BasePage):
-    ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")
-    ITEM_PRICE = (By.CLASS_NAME, "inventory_item_price")
-    CHECKOUT_BTN = (By.ID, "checkout")
+    ITEM_NAME = (By.CSS_SELECTOR, "[data-test='inventory-item-name']")
+    ITEM_PRICE = (By.CSS_SELECTOR, "[data-test='inventory-item-price']")
+    CHECKOUT_BTN = (By.CSS_SELECTOR, "[data-test='checkout']")
 
     def wait_until_loaded(self):
         self.wait_for_url_contains("cart.html")

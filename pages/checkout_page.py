@@ -3,14 +3,14 @@ from base.base_page import BasePage
 
 class CheckoutPage(BasePage):
     # Locators
-    FIRST_NAME = (By.ID, "first-name")
-    LAST_NAME = (By.ID, "last-name")
-    POSTAL_CODE = (By.ID, "postal-code")
-    CONTINUE_BTN = (By.ID, "continue")
-    FINISH_BTN = (By.ID, "finish")
-    OVERVIEW_ITEM_NAME = (By.CLASS_NAME, "inventory_item_name")
-    OVERVIEW_ITEM_PRICE = (By.CLASS_NAME, "inventory_item_price")
-    SUCCESS_HEADER = (By.CLASS_NAME, "complete-header")
+    FIRST_NAME = (By.CSS_SELECTOR, "[data-test='firstName']")
+    LAST_NAME = (By.CSS_SELECTOR, "[data-test='lastName']")
+    POSTAL_CODE = (By.CSS_SELECTOR, "[data-test='postalCode']")
+    CONTINUE_BTN = (By.CSS_SELECTOR, "[data-test='continue']")
+    FINISH_BTN = (By.CSS_SELECTOR, "[data-test='finish']")
+    OVERVIEW_ITEM_NAME = (By.CSS_SELECTOR, "[data-test='inventory-item-name']")
+    OVERVIEW_ITEM_PRICE = (By.CSS_SELECTOR, "[data-test='inventory-item-price']")
+    SUCCESS_HEADER = (By.CSS_SELECTOR, "[data-test='complete-header']")
 
     def wait_until_loaded(self):
         self.wait_for_url_contains("checkout-step-one.html")

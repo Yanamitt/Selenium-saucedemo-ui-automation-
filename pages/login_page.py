@@ -7,10 +7,10 @@ class LoginPage(BasePage):
     URL = DEFAULT_BASE_URL
 
     # Locators
-    USERNAME_INPUT = (By.ID, "user-name")
-    PASSWORD_INPUT = (By.ID, "password")
-    LOGIN_BTN = (By.ID, "login-button")
-    ERROR_MESSAGE = (By.CSS_SELECTOR, "h3[data-test='error']")
+    USERNAME_INPUT = (By.CSS_SELECTOR, "[data-test='username']")
+    PASSWORD_INPUT = (By.CSS_SELECTOR, "[data-test='password']")
+    LOGIN_BTN = (By.CSS_SELECTOR, "[data-test='login-button']")
+    ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-test='error']")
 
     def wait_until_loaded(self):
         self.wait_for_url_contains(get_base_url())

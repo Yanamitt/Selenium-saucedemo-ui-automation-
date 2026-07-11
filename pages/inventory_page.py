@@ -4,12 +4,23 @@ from base.base_page import BasePage
 
 class InventoryPage(BasePage):
     # Locators
-    PAGE_TITLE = (By.CLASS_NAME, "title")
-    BACKPACK_NAME = (By.CSS_SELECTOR, "[data-test='inventory-item-name']")
-    BACKPACK_PRICE = (By.CSS_SELECTOR, "[data-test='inventory-item-price']")
-    ADD_BACKPACK_BTN = (By.ID, "add-to-cart-sauce-labs-backpack")
-    CART_ICON = (By.CLASS_NAME, "shopping_cart_link")
-    CART_BADGE = (By.CLASS_NAME, "shopping_cart_badge")
+    PAGE_TITLE = (By.CSS_SELECTOR, "[data-test='title']")
+    BACKPACK_NAME = (
+        By.CSS_SELECTOR,
+        "[data-test='item-4-title-link'] [data-test='inventory-item-name']",
+    )
+    BACKPACK_PRICE = (
+        By.XPATH,
+        "//*[@data-test='item-4-title-link']"
+        "/ancestor::*[@data-test='inventory-item'][1]"
+        "//*[@data-test='inventory-item-price']",
+    )
+    ADD_BACKPACK_BTN = (
+        By.CSS_SELECTOR,
+        "[data-test='add-to-cart-sauce-labs-backpack']",
+    )
+    CART_ICON = (By.CSS_SELECTOR, "[data-test='shopping-cart-link']")
+    CART_BADGE = (By.CSS_SELECTOR, "[data-test='shopping-cart-badge']")
 
     def wait_until_loaded(self):
         self.wait_for_url_contains("inventory.html")
