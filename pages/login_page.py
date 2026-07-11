@@ -12,8 +12,15 @@ class LoginPage(BasePage):
     LOGIN_BTN = (By.ID, "login-button")
     ERROR_MESSAGE = (By.CSS_SELECTOR, "h3[data-test='error']")
 
+    def wait_until_loaded(self):
+        self.wait_for_url_contains(get_base_url())
+        self.wait_for_visibility(self.USERNAME_INPUT)
+        self.wait_for_clickable(self.LOGIN_BTN)
+        return self
+
     def load(self):
         self.driver.get(get_base_url())
+        return self.wait_until_loaded()
 
     def login(self, username, password):
         self.input_text(self.USERNAME_INPUT, username)

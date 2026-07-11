@@ -11,6 +11,12 @@ class InventoryPage(BasePage):
     CART_ICON = (By.CLASS_NAME, "shopping_cart_link")
     CART_BADGE = (By.CLASS_NAME, "shopping_cart_badge")
 
+    def wait_until_loaded(self):
+        self.wait_for_url_contains("inventory.html")
+        self.wait_for_visibility(self.PAGE_TITLE)
+        self.wait_for_clickable(self.CART_ICON)
+        return self
+
     def add_backpack_to_cart(self):
         self.click(self.ADD_BACKPACK_BTN)
 

@@ -6,6 +6,11 @@ class CartPage(BasePage):
     ITEM_PRICE = (By.CLASS_NAME, "inventory_item_price")
     CHECKOUT_BTN = (By.ID, "checkout")
 
+    def wait_until_loaded(self):
+        self.wait_for_url_contains("cart.html")
+        self.wait_for_clickable(self.CHECKOUT_BTN)
+        return self
+
     def get_item_name(self):
         return self.get_text(self.ITEM_NAME)
 

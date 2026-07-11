@@ -12,6 +12,22 @@ class CheckoutPage(BasePage):
     OVERVIEW_ITEM_PRICE = (By.CLASS_NAME, "inventory_item_price")
     SUCCESS_HEADER = (By.CLASS_NAME, "complete-header")
 
+    def wait_until_loaded(self):
+        self.wait_for_url_contains("checkout-step-one.html")
+        self.wait_for_visibility(self.FIRST_NAME)
+        self.wait_for_clickable(self.CONTINUE_BTN)
+        return self
+
+    def wait_until_overview_loaded(self):
+        self.wait_for_url_contains("checkout-step-two.html")
+        self.wait_for_clickable(self.FINISH_BTN)
+        return self
+
+    def wait_until_complete_loaded(self):
+        self.wait_for_url_contains("checkout-complete.html")
+        self.wait_for_visibility(self.SUCCESS_HEADER)
+        return self
+
     def fill_info_and_continue(self, first, last, zip_code):
         self.input_text(self.FIRST_NAME, first)
         self.input_text(self.LAST_NAME, last)

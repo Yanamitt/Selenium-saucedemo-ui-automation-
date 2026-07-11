@@ -11,11 +11,11 @@ def test_saucedemo_e2e_flow(driver):
     login_page = LoginPage(driver)
     login_page.load()
     login_page.login("standard_user", "secret_sauce")
+    inventory_page = InventoryPage(driver).wait_until_loaded()
     assert "inventory.html" in driver.current_url
     logging.info("步骤 1：登录成功")
 
     # 2. 浏览并添加商品
-    inventory_page = InventoryPage(driver)
     assert inventory_page.get_page_title() == "Products"
     product_name = inventory_page.get_backpack_name()
     product_price = inventory_page.get_backpack_price()
@@ -25,24 +25,26 @@ def test_saucedemo_e2e_flow(driver):
     inventory_page.add_backpack_to_cart()
     assert inventory_page.get_cart_count() == "1"
     inventory_page.go_to_cart()
+    cart_page = CartPage(driver).wait_until_loaded()
     logging.info("步骤 2：商品已添加至购物车")
 
     # 3. 购物车确认
-    cart_page = CartPage(driver)
     assert "cart.html" in driver.current_url
     assert cart_page.get_item_name() == product_name
     assert cart_page.get_item_price() == product_price
     cart_page.proceed_to_checkout()
+    checkout_page = CheckoutPage(driver).wait_until_loaded()
     assert "checkout-step-one.html" in driver.current_url
     logging.info("步骤 3：进入结算页面")
 
     # 4. 填写信息并下单
-    checkout_page = CheckoutPage(driver)
     checkout_page.fill_info_and_continue("Test", "User", "12345")
+    checkout_page.wait_until_overview_loaded()
     assert "checkout-step-two.html" in driver.current_url
     assert checkout_page.get_overview_item_name() == product_name
     assert checkout_page.get_overview_item_price() == product_price
     checkout_page.finish_order()
+    checkout_page.wait_until_complete_loaded()
     assert "checkout-complete.html" in driver.current_url
     logging.info("步骤 4：订单提交完成")
 
