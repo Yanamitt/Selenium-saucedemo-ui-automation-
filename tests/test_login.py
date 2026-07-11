@@ -4,6 +4,8 @@ from flows.login_flow import LoginFlow
 from test_data.saucedemo import LOGIN_FAILURE_CASES
 
 
+@pytest.mark.regression
+@pytest.mark.login
 @pytest.mark.parametrize(
     "case",
     LOGIN_FAILURE_CASES,

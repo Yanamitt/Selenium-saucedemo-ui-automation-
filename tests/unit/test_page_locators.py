@@ -38,6 +38,11 @@ EXPECTED_LOCATORS = [
     ),
     (
         InventoryPage,
+        "REMOVE_BACKPACK_BTN",
+        (By.CSS_SELECTOR, "[data-test='remove-sauce-labs-backpack']"),
+    ),
+    (
+        InventoryPage,
         "CART_ICON",
         (By.CSS_SELECTOR, "[data-test='shopping-cart-link']"),
     ),
@@ -45,6 +50,21 @@ EXPECTED_LOCATORS = [
         InventoryPage,
         "CART_BADGE",
         (By.CSS_SELECTOR, "[data-test='shopping-cart-badge']"),
+    ),
+    (
+        InventoryPage,
+        "SORT_SELECT",
+        (By.CSS_SELECTOR, "[data-test='product-sort-container']"),
+    ),
+    (
+        InventoryPage,
+        "PRODUCT_NAMES",
+        (By.CSS_SELECTOR, "[data-test='inventory-item-name']"),
+    ),
+    (
+        InventoryPage,
+        "PRODUCT_PRICES",
+        (By.CSS_SELECTOR, "[data-test='inventory-item-price']"),
     ),
     (CartPage, "ITEM_NAME", (By.CSS_SELECTOR, "[data-test='inventory-item-name']")),
     (CartPage, "ITEM_PRICE", (By.CSS_SELECTOR, "[data-test='inventory-item-price']")),
@@ -69,6 +89,7 @@ EXPECTED_LOCATORS = [
         "SUCCESS_HEADER",
         (By.CSS_SELECTOR, "[data-test='complete-header']"),
     ),
+    (CheckoutPage, "ERROR_MESSAGE", (By.CSS_SELECTOR, "[data-test='error']")),
 ]
 
 

@@ -11,6 +11,7 @@ class CheckoutPage(BasePage):
     OVERVIEW_ITEM_NAME = (By.CSS_SELECTOR, "[data-test='inventory-item-name']")
     OVERVIEW_ITEM_PRICE = (By.CSS_SELECTOR, "[data-test='inventory-item-price']")
     SUCCESS_HEADER = (By.CSS_SELECTOR, "[data-test='complete-header']")
+    ERROR_MESSAGE = (By.CSS_SELECTOR, "[data-test='error']")
 
     def wait_until_loaded(self):
         self.wait_for_url_contains("checkout-step-one.html")
@@ -45,3 +46,6 @@ class CheckoutPage(BasePage):
 
     def get_success_message(self):
         return self.get_text(self.SUCCESS_HEADER)
+
+    def get_error_text(self):
+        return self.get_text(self.ERROR_MESSAGE)

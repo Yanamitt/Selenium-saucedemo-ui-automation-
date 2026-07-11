@@ -57,7 +57,12 @@ def test_invalid_browser_still_creates_complete_failure_contract(tmp_path):
         environment.pop(name, None)
 
     completed = subprocess.run(
-        [sys.executable, "scripts/run_tests.py", "tests/test_login.py", "-q"],
+        [
+            sys.executable,
+            "scripts/run_tests.py",
+            "tests/test_login.py::test_login_failures[locked-out-user]",
+            "-q",
+        ],
         cwd=PROJECT_ROOT,
         env=environment,
         capture_output=True,
@@ -85,10 +90,10 @@ def test_invalid_browser_still_creates_complete_failure_contract(tmp_path):
         "BROWSER must be one of: chrome, edge, firefox"
     ]
     assert results["summary"] == {
-        "total": 3,
+        "total": 1,
         "passed": 0,
         "failed": 0,
-        "errors": 3,
+        "errors": 1,
         "skipped": 0,
     }
     assert not (run_dir / "tmp").exists()

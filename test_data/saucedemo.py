@@ -24,6 +24,27 @@ class ShoppingExpectation:
     success_message: str
 
 
+@dataclass(frozen=True)
+class LoginSuccessExpectation:
+    inventory_url_fragment: str
+    page_title: str
+
+
+@dataclass(frozen=True)
+class InventorySortCase:
+    case_id: str
+    sort_value: str
+    field: str
+    reverse: bool
+
+
+@dataclass(frozen=True)
+class CheckoutValidationCase:
+    case_id: str
+    details: CheckoutDetails
+    expected_error: str
+
+
 STANDARD_USER = Credentials("standard_user", "secret_sauce")
 DEFAULT_CHECKOUT_DETAILS = CheckoutDetails("Test", "User", "12345")
 
@@ -44,6 +65,67 @@ LOGIN_FAILURE_CASES = (
         case_id="empty-username",
         credentials=Credentials("", ""),
         expected_error="Epic sadface: Username is required",
+    ),
+    LoginFailureCase(
+        case_id="missing-username",
+        credentials=Credentials("", "secret_sauce"),
+        expected_error="Epic sadface: Username is required",
+    ),
+    LoginFailureCase(
+        case_id="missing-password",
+        credentials=Credentials("standard_user", ""),
+        expected_error="Epic sadface: Password is required",
+    ),
+    LoginFailureCase(
+        case_id="unknown-user",
+        credentials=Credentials("unknown_user", "secret_sauce"),
+        expected_error=(
+            "Epic sadface: Username and password do not match any user in this service"
+        ),
+    ),
+)
+
+STANDARD_LOGIN_EXPECTATION = LoginSuccessExpectation(
+    inventory_url_fragment="inventory.html",
+    page_title="Products",
+)
+
+INVENTORY_SORT_CASES = (
+    InventorySortCase("name-a-to-z", "az", "name", False),
+    InventorySortCase("name-z-to-a", "za", "name", True),
+    InventorySortCase("price-low-to-high", "lohi", "price", False),
+    InventorySortCase("price-high-to-low", "hilo", "price", True),
+)
+
+EXPECTED_INVENTORY_PRODUCT_NAMES = frozenset(
+    {
+        "Sauce Labs Backpack",
+        "Sauce Labs Bike Light",
+        "Sauce Labs Bolt T-Shirt",
+        "Sauce Labs Fleece Jacket",
+        "Sauce Labs Onesie",
+        "Test.allTheThings() T-Shirt (Red)",
+    }
+)
+
+CART_EXPECTED_ADDED_COUNT = "1"
+CHECKOUT_INFORMATION_URL_FRAGMENT = "checkout-step-one.html"
+
+CHECKOUT_VALIDATION_CASES = (
+    CheckoutValidationCase(
+        case_id="first-name-required",
+        details=CheckoutDetails("", "", ""),
+        expected_error="Error: First Name is required",
+    ),
+    CheckoutValidationCase(
+        case_id="last-name-required",
+        details=CheckoutDetails("Test", "", ""),
+        expected_error="Error: Last Name is required",
+    ),
+    CheckoutValidationCase(
+        case_id="postal-code-required",
+        details=CheckoutDetails("Test", "User", ""),
+        expected_error="Error: Postal Code is required",
     ),
 )
 

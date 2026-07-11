@@ -38,9 +38,11 @@ artifacts/            # 按 run_id 隔离的测试产物（运行后生成）
 
 | 模块 | 用例 | 关键断言 |
 | --- | --- | --- |
-| 登录 | 锁定用户登录失败 | 校验 locked out 错误文案 |
-| 登录 | 错误密码登录失败 | 校验账号密码不匹配错误文案 |
-| 登录 | 空用户名登录失败 | 校验用户名必填错误文案 |
+| 登录 | 标准用户登录成功 | 校验 Inventory URL 和页面标题 |
+| 登录 | 锁定、错误密码、空字段、未知用户等 6 种失败输入 | 校验每种输入对应的错误文案 |
+| Inventory | 名称和价格的 4 种排序方式 | 校验商品列表按指定方向排序 |
+| 购物车 | Backpack 加购后移除 | 校验 badge 数量及移除状态 |
+| Checkout | 名字、姓氏、邮编必填校验 | 校验停留页面和对应错误文案 |
 | 购物流程 | 登录、加购、购物车、结算、完成订单 | 校验页面跳转、商品名称、价格、购物车数量和完成订单文案 |
 
 ## 快速开始
@@ -63,6 +65,15 @@ python scripts/run_tests.py tests/test_login.py -q
 ```powershell
 python scripts/run_tests.py tests/test_e2e_flow.py -q
 ```
+
+按测试层级或业务模块运行：
+
+```powershell
+python scripts/run_tests.py -m smoke
+python scripts/run_tests.py -m "regression and checkout"
+```
+
+可用标记包括 `smoke`、`regression`、`login`、`inventory`、`cart`、`checkout` 和 `e2e`。这些标记也会写入结构化结果，便于按模块分析测试质量。
 
 ## 运行配置
 

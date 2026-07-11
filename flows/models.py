@@ -30,3 +30,27 @@ class ShoppingFlowResult:
     overview_item_price: str
     complete_url: str
     success_message: str
+
+
+@dataclass(frozen=True)
+class LoginSuccessResult:
+    inventory_url: str
+    page_title: str
+
+
+@dataclass(frozen=True)
+class InventorySortResult:
+    product_names: tuple[str, ...]
+    product_prices: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class CartToggleResult:
+    added_count: str
+    badge_removed: bool
+
+
+@dataclass(frozen=True)
+class CheckoutValidationResult:
+    checkout_url: str
+    error_message: str

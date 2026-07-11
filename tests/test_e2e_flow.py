@@ -1,3 +1,5 @@
+import pytest
+
 from flows.shopping_flow import ShoppingFlow
 from test_data.saucedemo import (
     BACKPACK_ORDER_EXPECTATION,
@@ -6,6 +8,9 @@ from test_data.saucedemo import (
 )
 
 
+@pytest.mark.smoke
+@pytest.mark.regression
+@pytest.mark.e2e
 def test_saucedemo_e2e_flow(driver):
     result = ShoppingFlow(driver).complete_backpack_order(
         STANDARD_USER,
