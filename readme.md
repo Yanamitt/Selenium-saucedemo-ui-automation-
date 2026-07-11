@@ -114,4 +114,15 @@ artifacts/<run_id>/
 
 ## CI
 
-项目包含 GitHub Actions 配置：`.github/workflows/ui-tests.yml`。CI 会安装依赖并以 `HEADLESS=true` 运行标准测试入口，执行结束后上传完整的 `artifacts/` 目录。
+项目包含 GitHub Actions 配置：`.github/workflows/ui-tests.yml`。
+
+| 触发方式 | 质量门禁 |
+| --- | --- |
+| Pull Request | Workflow lint、全部单元测试，以及 Edge、Chrome、Firefox 三浏览器 Smoke |
+| 主分支 push | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
+| 工作日 03:00（日本时间） | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
+| 手动触发 | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
+
+浏览器矩阵使用 `fail-fast: false`，即使某个浏览器失败也会继续收集其他浏览器的结果。每个 job 都会上传独立命名的 `artifacts/`，保留 14 天。
+
+CI 不会自动重跑失败用例。需要合并门禁时，应在 GitHub 分支保护中将 `Workflow lint`、`Unit tests`、`Smoke / edge`、`Smoke / chrome` 和 `Smoke / firefox` 设置为 required checks。Regression 仅在 main push、定时和手动任务中运行，属于合并后的后置质量门禁。
