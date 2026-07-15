@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20260715T174316457081Z-6c492057",
+  "project": "saucedemo-automation",
+  "started_at": "2026-07-15T17:43:16.457081Z",
+  "environment": {
+    "base_url": "https://www.saucedemo.com/",
+    "browser": "edge",
+    "headless": true,
+    "selenium_timeout": 15,
+    "python": "3.12.13",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "pytest": "9.0.2",
+    "selenium": "4.41.0",
+    "configuration_errors": []
+  },
+  "git": {
+    "commit": "f2f2fea17ed9e886d4dc115e7d300811030cfd74",
+    "branch": "codex/ci-quality-gates"
+  }
+}

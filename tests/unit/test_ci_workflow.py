@@ -8,6 +8,11 @@ WORKFLOW_PATH = PROJECT_ROOT / ".github" / "workflows" / "ui-tests.yml"
 WORKFLOW_TEXT = WORKFLOW_PATH.read_text(encoding="utf-8")
 WORKFLOW = yaml.safe_load(WORKFLOW_TEXT)
 JOBS = WORKFLOW["jobs"]
+CHECKOUT_ACTION = "actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5"
+SETUP_PYTHON_ACTION = "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+UPLOAD_ARTIFACT_ACTION = (
+    "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02"
+)
 
 
 def find_step(job, *, name=None, uses=None):
@@ -38,6 +43,7 @@ def test_ci_has_actionlint_and_fast_unit_quality_gate():
 
     assert unit_job["runs-on"] == "ubuntu-latest"
     assert unit_job["timeout-minutes"] == 10
+    find_step(unit_job, uses=SETUP_PYTHON_ACTION)
     assert find_step(unit_job, name="Run unit tests")["run"] == (
         "python scripts/run_tests.py tests/unit -q"
     )
@@ -97,7 +103,7 @@ def test_test_jobs_always_upload_unique_artifacts_for_fourteen_days():
     }
 
     for job_name, artifact_name in expected_names.items():
-        step = find_step(JOBS[job_name], uses="actions/upload-artifact@v4")
+        step = find_step(JOBS[job_name], uses=UPLOAD_ARTIFACT_ACTION)
         assert step["if"] == "always()"
         assert step["with"] == {
             "name": artifact_name,
@@ -105,6 +111,18 @@ def test_test_jobs_always_upload_unique_artifacts_for_fourteen_days():
             "if-no-files-found": "warn",
             "retention-days": 14,
         }
+
+
+def test_official_actions_are_pinned_to_immutable_commits():
+    expected = {CHECKOUT_ACTION, SETUP_PYTHON_ACTION, UPLOAD_ARTIFACT_ACTION}
+    actual = {
+        step["uses"]
+        for job in JOBS.values()
+        for step in job["steps"]
+        if step.get("uses", "").startswith("actions/")
+    }
+
+    assert actual == expected
 
 
 def test_ci_uses_minimum_permissions_and_never_hides_failures():
