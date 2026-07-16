@@ -47,9 +47,9 @@ def test_public_repository_documents_and_dependency_contract_are_complete():
 
     assert (PROJECT_ROOT / "LICENSE").is_file()
     assert (PROJECT_ROOT / "SECURITY.md").is_file()
-    assert "100" in readme
-    assert "84" in readme
-    assert "16" in readme
+    assert "| 单元测试 | 85 | 85 Passed |" in readme
+    assert "| Web UI Regression | 16 | 16 Passed |" in readme
+    assert "| 完整测试集 | 101 | 101 Passed |" in readme
     assert "公开测试凭证" in readme
     assert "docs/samples/edge-full-green" in readme
     assert "webdriver-manager" not in requirements
