@@ -160,7 +160,7 @@ artifacts/<run_id>/
 | --- | --- |
 | Pull Request | Workflow lint、全部单元测试，以及 Edge、Chrome、Firefox 三浏览器 Smoke |
 | 主分支 push | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
-| 工作日 03:00（日本时间） | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
+| 工作日 13:00（北京时间） | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
 | 手动触发 | Workflow lint、全部单元测试，以及三浏览器完整 Regression |
 
 浏览器矩阵使用 `fail-fast: false`，即使某个浏览器失败也会继续收集其他浏览器的结果。每个 job 都会上传独立命名的 `artifacts/`，保留 14 天。
