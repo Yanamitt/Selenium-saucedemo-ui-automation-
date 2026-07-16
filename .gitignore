@@ -1,9 +1,50 @@
+# Python caches and build output
 __pycache__/
+*.py[cod]
+*$py.class
 .pytest_cache/
-*.html
-*.png
-screenshots/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+build/
+dist/
+*.egg-info/
+
+# Virtual environments and local configuration
+.venv/
 venv/
+env/
+ENV/
 .env
+.env.*
+!.env.example
+
+# Test and browser runtime output
+/artifacts/
+/screenshots/
+/report.html
+/junit.xml
+/results.json
+/metadata.json
+/failures.txt
+/cookies.json
+/session.json
+/storage-state.json
+allure-results/
+allure-report/
+logs/
+*.log
+
+# Local tools and worktrees
+.understand-anything/
+.worktrees/
+
+# IDE and operating system files
 .idea/
 .vscode/
+.DS_Store
+Thumbs.db

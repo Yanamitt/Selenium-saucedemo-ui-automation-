@@ -1,36 +1,39 @@
-from pages.login_page import LoginPage
-from pages.inventory_page import InventoryPage
-from pages.cart_page import CartPage
-from pages.checkout_page import CheckoutPage
-import logging
+import pytest
 
+from flows.shopping_flow import ShoppingFlow
+from test_data.saucedemo import (
+    BACKPACK_ORDER_EXPECTATION,
+    DEFAULT_CHECKOUT_DETAILS,
+    STANDARD_USER,
+)
+
+
+@pytest.mark.smoke
+@pytest.mark.regression
+@pytest.mark.e2e
 def test_saucedemo_e2e_flow(driver):
-    logging.info("开始测试：SauceDemo 核心购物流程")
-    
-    # 1. 登录
-    login_page = LoginPage(driver)
-    login_page.load()
-    login_page.login("standard_user", "secret_sauce")
-    logging.info("步骤 1：登录成功")
+    result = ShoppingFlow(driver).complete_backpack_order(
+        STANDARD_USER,
+        DEFAULT_CHECKOUT_DETAILS,
+    )
+    expected = BACKPACK_ORDER_EXPECTATION
 
-    # 2. 浏览并添加商品
-    inventory_page = InventoryPage(driver)
-    inventory_page.add_backpack_to_cart()
-    inventory_page.go_to_cart()
-    logging.info("步骤 2：商品已添加至购物车")
+    assert expected.inventory_url_fragment in result.inventory_url
+    assert result.page_title == expected.page_title
+    assert result.product_name == expected.product_name
+    assert result.product_price == expected.product_price
+    assert result.cart_count == expected.cart_count
 
-    # 3. 购物车确认
-    cart_page = CartPage(driver)
-    cart_page.proceed_to_checkout()
-    logging.info("步骤 3：进入结算页面")
+    assert expected.cart_url_fragment in result.cart_url
+    assert result.cart_item_name == expected.product_name
+    assert result.cart_item_price == expected.product_price
 
-    # 4. 填写信息并下单
-    checkout_page = CheckoutPage(driver)
-    checkout_page.fill_info_and_continue("Test", "User", "12345")
-    checkout_page.finish_order()
-    logging.info("步骤 4：订单提交完成")
+    assert expected.checkout_information_url_fragment in result.checkout_information_url
+    assert expected.overview_url_fragment in result.overview_url
+    assert result.overview_item_name == expected.product_name
+    assert result.overview_item_price == expected.product_price
 
-    # 5. 断言验证
-    success_msg = checkout_page.get_success_message()
-    assert success_msg == "Thank you for your order!", f"预期之外的提示语: {success_msg}"
-    logging.info("测试通过：成功校验订单完成提示！")
+    assert expected.complete_url_fragment in result.complete_url
+    assert result.success_message == expected.success_message, (
+        f"预期之外的提示语: {result.success_message}"
+    )

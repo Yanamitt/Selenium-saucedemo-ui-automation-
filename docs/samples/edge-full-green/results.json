@@ -1,0 +1,1648 @@
+{
+  "schema_version": "1.0",
+  "run_id": "20260715T174316457081Z-6c492057",
+  "started_at": "2026-07-15T17:43:16.457081Z",
+  "finished_at": "2026-07-15T17:44:23.798882Z",
+  "duration_seconds": 67.341801,
+  "exit_code": 0,
+  "summary": {
+    "total": 94,
+    "passed": 94,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "tests": [
+    {
+      "nodeid": "tests/test_checkout.py::test_checkout_required_fields[first-name-required]",
+      "name": "test_checkout_required_fields[first-name-required]",
+      "module": "tests/test_checkout.py",
+      "markers": [
+        "checkout",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 4.222408,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_checkout.py::test_checkout_required_fields[last-name-required]",
+      "name": "test_checkout_required_fields[last-name-required]",
+      "module": "tests/test_checkout.py",
+      "markers": [
+        "checkout",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 4.083076,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_checkout.py::test_checkout_required_fields[postal-code-required]",
+      "name": "test_checkout_required_fields[postal-code-required]",
+      "module": "tests/test_checkout.py",
+      "markers": [
+        "checkout",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 4.17704,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_e2e_flow.py::test_saucedemo_e2e_flow",
+      "name": "test_saucedemo_e2e_flow",
+      "module": "tests/test_e2e_flow.py",
+      "markers": [
+        "e2e",
+        "regression",
+        "smoke"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 4.661757,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_inventory.py::test_add_and_remove_backpack_updates_cart_badge",
+      "name": "test_add_and_remove_backpack_updates_cart_badge",
+      "module": "tests/test_inventory.py",
+      "markers": [
+        "cart",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.754847,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_inventory.py::test_inventory_sort[name-a-to-z]",
+      "name": "test_inventory_sort[name-a-to-z]",
+      "module": "tests/test_inventory.py",
+      "markers": [
+        "inventory",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.833035,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_inventory.py::test_inventory_sort[name-z-to-a]",
+      "name": "test_inventory_sort[name-z-to-a]",
+      "module": "tests/test_inventory.py",
+      "markers": [
+        "inventory",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.993154,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_inventory.py::test_inventory_sort[price-high-to-low]",
+      "name": "test_inventory_sort[price-high-to-low]",
+      "module": "tests/test_inventory.py",
+      "markers": [
+        "inventory",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.902142,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_inventory.py::test_inventory_sort[price-low-to-high]",
+      "name": "test_inventory_sort[price-low-to-high]",
+      "module": "tests/test_inventory.py",
+      "markers": [
+        "inventory",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 4.056517,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login.py::test_login_failures[empty-username]",
+      "name": "test_login_failures[empty-username]",
+      "module": "tests/test_login.py",
+      "markers": [
+        "login",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.720965,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login.py::test_login_failures[locked-out-user]",
+      "name": "test_login_failures[locked-out-user]",
+      "module": "tests/test_login.py",
+      "markers": [
+        "login",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.669033,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login.py::test_login_failures[missing-password]",
+      "name": "test_login_failures[missing-password]",
+      "module": "tests/test_login.py",
+      "markers": [
+        "login",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.701392,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login.py::test_login_failures[missing-username]",
+      "name": "test_login_failures[missing-username]",
+      "module": "tests/test_login.py",
+      "markers": [
+        "login",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.824958,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login.py::test_login_failures[unknown-user]",
+      "name": "test_login_failures[unknown-user]",
+      "module": "tests/test_login.py",
+      "markers": [
+        "login",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 4.34441,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login.py::test_login_failures[wrong-password]",
+      "name": "test_login_failures[wrong-password]",
+      "module": "tests/test_login.py",
+      "markers": [
+        "login",
+        "parametrize",
+        "regression"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.765262,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/test_login_success.py::test_standard_user_login_success",
+      "name": "test_standard_user_login_success",
+      "module": "tests/test_login_success.py",
+      "markers": [
+        "login",
+        "regression",
+        "smoke"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 3.940991,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_click_waits_until_element_is_clickable",
+      "name": "test_click_waits_until_element_is_clickable",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000715,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_current_url_returns_driver_url",
+      "name": "test_current_url_returns_driver_url",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000618,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_find_delegates_to_visibility_wait",
+      "name": "test_find_delegates_to_visibility_wait",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000536,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_input_text_and_get_text_use_visibility_wait",
+      "name": "test_input_text_and_get_text_use_visibility_wait",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.001216,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_wait_method_uses_matching_expected_condition[wait_for_all_visible-visibility_of_all_elements_located-argument4]",
+      "name": "test_wait_method_uses_matching_expected_condition[wait_for_all_visible-visibility_of_all_elements_located-argument4]",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000662,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_wait_method_uses_matching_expected_condition[wait_for_clickable-element_to_be_clickable-argument2]",
+      "name": "test_wait_method_uses_matching_expected_condition[wait_for_clickable-element_to_be_clickable-argument2]",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.0005,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_wait_method_uses_matching_expected_condition[wait_for_invisibility-invisibility_of_element_located-argument3]",
+      "name": "test_wait_method_uses_matching_expected_condition[wait_for_invisibility-invisibility_of_element_located-argument3]",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000506,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_wait_method_uses_matching_expected_condition[wait_for_presence-presence_of_element_located-argument0]",
+      "name": "test_wait_method_uses_matching_expected_condition[wait_for_presence-presence_of_element_located-argument0]",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000796,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_wait_method_uses_matching_expected_condition[wait_for_url_contains-url_contains-inventory.html]",
+      "name": "test_wait_method_uses_matching_expected_condition[wait_for_url_contains-url_contains-inventory.html]",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.00125,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_base_page.py::test_wait_method_uses_matching_expected_condition[wait_for_visibility-visibility_of_element_located-argument1]",
+      "name": "test_wait_method_uses_matching_expected_condition[wait_for_visibility-visibility_of_element_located-argument1]",
+      "module": "tests/unit/test_base_page.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000643,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_business_flows.py::test_login_flow_submits_credentials_and_returns_error",
+      "name": "test_login_flow_submits_credentials_and_returns_error",
+      "module": "tests/unit/test_business_flows.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.002689,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_business_flows.py::test_shopping_flow_returns_observations_without_asserting_them",
+      "name": "test_shopping_flow_returns_observations_without_asserting_them",
+      "module": "tests/unit/test_business_flows.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.004043,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_ci_workflow.py::test_ci_has_actionlint_and_fast_unit_quality_gate",
+      "name": "test_ci_has_actionlint_and_fast_unit_quality_gate",
+      "module": "tests/unit/test_ci_workflow.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000387,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_ci_workflow.py::test_ci_triggers_pr_main_schedule_and_manual_runs_only",
+      "name": "test_ci_triggers_pr_main_schedule_and_manual_runs_only",
+      "module": "tests/unit/test_ci_workflow.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.00039,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_ci_workflow.py::test_ci_uses_minimum_permissions_and_never_hides_failures",
+      "name": "test_ci_uses_minimum_permissions_and_never_hides_failures",
+      "module": "tests/unit/test_ci_workflow.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000454,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_ci_workflow.py::test_main_schedule_and_manual_runs_use_full_regression_matrix",
+      "name": "test_main_schedule_and_manual_runs_use_full_regression_matrix",
+      "module": "tests/unit/test_ci_workflow.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000544,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_ci_workflow.py::test_pull_requests_run_cross_browser_smoke_matrix",
+      "name": "test_pull_requests_run_cross_browser_smoke_matrix",
+      "module": "tests/unit/test_ci_workflow.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000358,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_ci_workflow.py::test_test_jobs_always_upload_unique_artifacts_for_fourteen_days",
+      "name": "test_test_jobs_always_upload_unique_artifacts_for_fourteen_days",
+      "module": "tests/unit/test_ci_workflow.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000479,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_business_flows.py::test_checkout_flow_returns_required_field_error",
+      "name": "test_checkout_flow_returns_required_field_error",
+      "module": "tests/unit/test_expanded_business_flows.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.029603,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_business_flows.py::test_inventory_flow_adds_and_removes_backpack",
+      "name": "test_inventory_flow_adds_and_removes_backpack",
+      "module": "tests/unit/test_expanded_business_flows.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.001611,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_business_flows.py::test_inventory_flow_sorts_and_returns_visible_products",
+      "name": "test_inventory_flow_sorts_and_returns_visible_products",
+      "module": "tests/unit/test_expanded_business_flows.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.006903,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_business_flows.py::test_login_flow_returns_successful_inventory_observations",
+      "name": "test_login_flow_returns_successful_inventory_observations",
+      "module": "tests/unit/test_expanded_business_flows.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.001337,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_page_actions.py::test_checkout_returns_validation_error_text",
+      "name": "test_checkout_returns_validation_error_text",
+      "module": "tests/unit/test_expanded_page_actions.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.00076,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_page_actions.py::test_inventory_removes_backpack_and_waits_for_empty_badge",
+      "name": "test_inventory_removes_backpack_and_waits_for_empty_badge",
+      "module": "tests/unit/test_expanded_page_actions.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000673,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_page_actions.py::test_inventory_returns_all_visible_product_names_and_prices",
+      "name": "test_inventory_returns_all_visible_product_names_and_prices",
+      "module": "tests/unit/test_expanded_page_actions.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000571,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_expanded_page_actions.py::test_inventory_sort_selects_requested_value",
+      "name": "test_inventory_sort_selects_requested_value",
+      "module": "tests/unit/test_expanded_page_actions.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.001348,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_failure_artifacts.py::test_failure_log_timestamp_is_utc",
+      "name": "test_failure_log_timestamp_is_utc",
+      "module": "tests/unit/test_failure_artifacts.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.01748,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_failure_artifacts.py::test_html_screenshot_is_embedded_as_a_data_uri",
+      "name": "test_html_screenshot_is_embedded_as_a_data_uri",
+      "module": "tests/unit/test_failure_artifacts.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.009558,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CartPage-CHECKOUT_BTN-expected16]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CartPage-CHECKOUT_BTN-expected16]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000809,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CartPage-ITEM_NAME-expected14]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CartPage-ITEM_NAME-expected14]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000781,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CartPage-ITEM_PRICE-expected15]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CartPage-ITEM_PRICE-expected15]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000649,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-CONTINUE_BTN-expected20]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-CONTINUE_BTN-expected20]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000744,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-ERROR_MESSAGE-expected25]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-ERROR_MESSAGE-expected25]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000562,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-FINISH_BTN-expected21]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-FINISH_BTN-expected21]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000532,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-FIRST_NAME-expected17]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-FIRST_NAME-expected17]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000663,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-LAST_NAME-expected18]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-LAST_NAME-expected18]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000575,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-OVERVIEW_ITEM_NAME-expected22]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-OVERVIEW_ITEM_NAME-expected22]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000663,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-OVERVIEW_ITEM_PRICE-expected23]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-OVERVIEW_ITEM_PRICE-expected23]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000937,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-POSTAL_CODE-expected19]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-POSTAL_CODE-expected19]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000757,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[CheckoutPage-SUCCESS_HEADER-expected24]",
+      "name": "test_page_locator_uses_stable_data_test_contract[CheckoutPage-SUCCESS_HEADER-expected24]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000585,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-ADD_BACKPACK_BTN-expected7]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-ADD_BACKPACK_BTN-expected7]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000716,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-BACKPACK_NAME-expected5]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-BACKPACK_NAME-expected5]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.001072,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-BACKPACK_PRICE-expected6]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-BACKPACK_PRICE-expected6]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000668,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-CART_BADGE-expected10]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-CART_BADGE-expected10]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000773,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-CART_ICON-expected9]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-CART_ICON-expected9]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000927,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-PAGE_TITLE-expected4]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-PAGE_TITLE-expected4]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000694,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-PRODUCT_NAMES-expected12]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-PRODUCT_NAMES-expected12]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000606,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-PRODUCT_PRICES-expected13]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-PRODUCT_PRICES-expected13]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000771,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-REMOVE_BACKPACK_BTN-expected8]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-REMOVE_BACKPACK_BTN-expected8]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000722,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[InventoryPage-SORT_SELECT-expected11]",
+      "name": "test_page_locator_uses_stable_data_test_contract[InventoryPage-SORT_SELECT-expected11]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000878,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[LoginPage-ERROR_MESSAGE-expected3]",
+      "name": "test_page_locator_uses_stable_data_test_contract[LoginPage-ERROR_MESSAGE-expected3]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000562,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[LoginPage-LOGIN_BTN-expected2]",
+      "name": "test_page_locator_uses_stable_data_test_contract[LoginPage-LOGIN_BTN-expected2]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000885,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[LoginPage-PASSWORD_INPUT-expected1]",
+      "name": "test_page_locator_uses_stable_data_test_contract[LoginPage-PASSWORD_INPUT-expected1]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000784,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_locators.py::test_page_locator_uses_stable_data_test_contract[LoginPage-USERNAME_INPUT-expected0]",
+      "name": "test_page_locator_uses_stable_data_test_contract[LoginPage-USERNAME_INPUT-expected0]",
+      "module": "tests/unit/test_page_locators.py",
+      "markers": [
+        "parametrize"
+      ],
+      "outcome": "passed",
+      "duration_seconds": 0.000663,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_cart_page_waits_for_url_and_checkout_action",
+      "name": "test_cart_page_waits_for_url_and_checkout_action",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000728,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_checkout_page_waits_for_complete_step",
+      "name": "test_checkout_page_waits_for_complete_step",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000908,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_checkout_page_waits_for_information_step",
+      "name": "test_checkout_page_waits_for_information_step",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.001403,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_checkout_page_waits_for_overview_step",
+      "name": "test_checkout_page_waits_for_overview_step",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000859,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_inventory_page_waits_for_url_title_and_primary_action",
+      "name": "test_inventory_page_waits_for_url_title_and_primary_action",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000613,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_login_page_loads_configured_url_and_waits_until_ready",
+      "name": "test_login_page_loads_configured_url_and_waits_until_ready",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.00096,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_page_readiness.py::test_login_page_waits_for_url_and_login_controls",
+      "name": "test_login_page_waits_for_url_and_login_controls",
+      "module": "tests/unit/test_page_readiness.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.001135,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_pytest_reporting.py::test_direct_pytest_writes_structured_results",
+      "name": "test_direct_pytest_writes_structured_results",
+      "module": "tests/unit/test_pytest_reporting.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.778834,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_reporting_contract.py::test_invalid_browser_still_creates_complete_failure_contract",
+      "name": "test_invalid_browser_still_creates_complete_failure_contract",
+      "module": "tests/unit/test_reporting_contract.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 1.227939,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_reporting_contract.py::test_standard_run_creates_complete_artifact_contract",
+      "name": "test_standard_run_creates_complete_artifact_contract",
+      "module": "tests/unit/test_reporting_contract.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.765643,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_result_writer.py::test_build_metadata_has_stable_environment_and_git_fields",
+      "name": "test_build_metadata_has_stable_environment_and_git_fields",
+      "module": "tests/unit/test_result_writer.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.0065,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_result_writer.py::test_collector_aggregates_phases_into_one_passed_test",
+      "name": "test_collector_aggregates_phases_into_one_passed_test",
+      "module": "tests/unit/test_result_writer.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.007384,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_result_writer.py::test_collector_is_not_treated_as_a_pytest_test_class",
+      "name": "test_collector_is_not_treated_as_a_pytest_test_class",
+      "module": "tests/unit/test_result_writer.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000467,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_result_writer.py::test_setup_failure_is_reported_as_error",
+      "name": "test_setup_failure_is_reported_as_error",
+      "module": "tests/unit/test_result_writer.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.007022,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_result_writer.py::test_teardown_error_overrides_call_failure",
+      "name": "test_teardown_error_overrides_call_failure",
+      "module": "tests/unit/test_result_writer.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.006822,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_result_writer.py::test_write_json_preserves_unicode",
+      "name": "test_write_json_preserves_unicode",
+      "module": "tests/unit/test_result_writer.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.005804,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_context.py::test_create_attaches_to_a_fully_exported_context",
+      "name": "test_create_attaches_to_a_fully_exported_context",
+      "module": "tests/unit/test_run_context.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.007957,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_context.py::test_create_rejects_populated_directory_for_a_new_run",
+      "name": "test_create_rejects_populated_directory_for_a_new_run",
+      "module": "tests/unit/test_run_context.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.00511,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_context.py::test_create_rejects_unsafe_run_id",
+      "name": "test_create_rejects_unsafe_run_id",
+      "module": "tests/unit/test_run_context.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.0053,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_context.py::test_create_resolves_relative_artifact_root",
+      "name": "test_create_resolves_relative_artifact_root",
+      "module": "tests/unit/test_run_context.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.00743,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_context.py::test_export_environment_preserves_context",
+      "name": "test_export_environment_preserves_context",
+      "module": "tests/unit/test_run_context.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.006155,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_context.py::test_generate_run_id_uses_utc_timestamp_and_suffix",
+      "name": "test_generate_run_id_uses_utc_timestamp_and_suffix",
+      "module": "tests/unit/test_run_context.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.000542,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_tests.py::test_build_pytest_args_routes_reports_to_run_directory",
+      "name": "test_build_pytest_args_routes_reports_to_run_directory",
+      "module": "tests/unit/test_run_tests.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.005712,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    },
+    {
+      "nodeid": "tests/unit/test_run_tests.py::test_cleanup_runtime_temp_retries_and_warns",
+      "name": "test_cleanup_runtime_temp_retries_and_warns",
+      "module": "tests/unit/test_run_tests.py",
+      "markers": [],
+      "outcome": "passed",
+      "duration_seconds": 0.003609,
+      "failure_phase": null,
+      "failure_message": null,
+      "screenshot": null,
+      "phases": {
+        "call": "passed",
+        "setup": "passed",
+        "teardown": "passed"
+      }
+    }
+  ]
+}
