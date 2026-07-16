@@ -24,6 +24,15 @@ except ImportError:
 def _build_options(browser_name, headless):
     if browser_name == "chrome":
         options = webdriver.ChromeOptions()
+        options.add_argument("--disable-features=PasswordLeakDetection")
+        options.add_experimental_option(
+            "prefs",
+            {
+                "credentials_enable_service": False,
+                "profile.password_manager_enabled": False,
+                "profile.password_manager_leak_detection": False,
+            },
+        )
     elif browser_name == "firefox":
         options = webdriver.FirefoxOptions()
     else:
