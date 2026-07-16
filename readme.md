@@ -69,9 +69,9 @@ flowchart LR
 
 | 测试层级 | 数量 | 结果 |
 | --- | ---: | --- |
-| 单元测试 | 84 | 84 Passed |
+| 单元测试 | 85 | 85 Passed |
 | Web UI Regression | 16 | 16 Passed |
-| 完整测试集 | 100 | 100 Passed |
+| 完整测试集 | 101 | 101 Passed |
 
 本地结果只证明 Edge 环境通过。Chrome 和 Firefox 的真实结果以首次 Pull Request 的 GitHub Actions 三浏览器矩阵为准，不把尚未执行的环境描述为已验证。
 
