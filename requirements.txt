@@ -1,4 +1,4 @@
-﻿selenium==4.41.0
+selenium==4.50.0
 pytest==9.0.2
 pytest-html==4.2.0
 PyYAML==6.0.2
